@@ -22,6 +22,6 @@
 
 .btnSmall {
     font-size: 12px;
-    background-color: none;
+    background-color: transparent;
     font-weight: var(--font-weight-2);
 }

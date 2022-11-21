@@ -1,6 +1,7 @@
 import BtnDefaultGreyColor from './components/BtnDefaultMainColor';
 import BtnDefaultMainColor from './components/BtnDefaultMainColor';
 import CardAll from './components/CardAll';
+import CardCar from './components/CardCar';
 import InputSearch from './components/InputSearch';
 import GlobalStyle from './styles/global';
 import './styles/index.css';
@@ -25,7 +26,8 @@ function App() {
         Uva
       </BtnDefaultGreyColor> */}
       {/* <InputSearch/> */}
-      <CardAll/>
+      {/* <CardAll/> */}
+      <CardCar name='Sandíce' category='suco'/>
     </div>
   );
 }
