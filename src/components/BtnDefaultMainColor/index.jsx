@@ -1,12 +1,10 @@
 import { ButtonStyle } from "./styles";
 
-function BtnDefaultMainColor({ action , children }) {
+function BtnDefaultMainColor({ action , children, classList }) {
     return (
-        <div>
-            <ButtonStyle className="btnCommon" oncClick={() => action()}>
+        <ButtonStyle className={classList} oncClick={() => action()}>
                 {children}
-            </ButtonStyle>
-        </div>
+        </ButtonStyle>
     );
 };
 
