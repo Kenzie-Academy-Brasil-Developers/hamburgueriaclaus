@@ -1,29 +1,21 @@
 import { valueReal } from "../../generalFunctions";
 import BtnDefaultMainColor from "../BtnDefaultMainColor";
-import { CardStyle } from "./styles";
+import { CardStyle, CategoryStyle, ContainerImgStyle, CardInfoStyle, ImgStyle, ProductNameStyle, PriceStyle } from "./styles";
 
-function CardAll() {
-    const currentCard = {
-		id: 1,
-		name: "Hamburguer",
-		category: "Sanduíches",
-		price: 14,
-		img: "https://i.imgur.com/Vng6VzV.png"
-	}
-    const { name , category , price , img } = currentCard
+function CardAll({ name , category , price , img }) {
     return (
         <CardStyle>
-            <picture>
-                <img src={img} alt={name}/>
-            </picture>
-            <div>
-                <h3>{name}</h3>
-                <legend>{category}</legend>
-                <h4>{valueReal(price)}</h4>
+            <ContainerImgStyle>
+                <ImgStyle src={img} alt={name}/>
+            </ContainerImgStyle>
+            <CardInfoStyle>
+                <ProductNameStyle>{name}</ProductNameStyle>
+                <CategoryStyle>{category}</CategoryStyle>
+                <PriceStyle>{valueReal(price)}</PriceStyle>
                 <BtnDefaultMainColor classList='btnBig'>Adicionar</BtnDefaultMainColor>
-            </div>
+            </CardInfoStyle>
         </CardStyle>
-    )
+    );
 };
 
 export default CardAll;
