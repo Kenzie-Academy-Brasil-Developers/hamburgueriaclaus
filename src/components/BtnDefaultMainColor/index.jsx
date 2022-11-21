@@ -1,9 +1,9 @@
-import { ButtonStyle } from "./styles";
+import { ButtonStyle } from './styles';
 
 function BtnDefaultMainColor({ action , children, classList }) {
     return (
-        <ButtonStyle className={classList} oncClick={() => action()}>
-                {children}
+        <ButtonStyle className={classList} onClick={() => action()}>
+            {children}
         </ButtonStyle>
     );
 };
