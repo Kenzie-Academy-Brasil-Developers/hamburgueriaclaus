@@ -1,0 +1,12 @@
+.btnCommon {
+    display: block;
+    padding: 11.5px 20px;
+    border: none;
+    border-radius: var(--radius-1);
+}
+
+.btnSmall {
+    display: block;
+    border: none;
+    background-color: none;
+}
