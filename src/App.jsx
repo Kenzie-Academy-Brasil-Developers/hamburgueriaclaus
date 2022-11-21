@@ -1,13 +1,14 @@
-import BtnDefaultGreyColor from "./components/BtnDefaultGreyColor";
-import BtnDefaultMainColor from "./components/BtnDefaultMainColor";
-import GlobalStyle from "./styles/global";
-import "./styles/index.css";
+import BtnDefaultGreyColor from './components/BtnDefaultMainColor';
+import BtnDefaultMainColor from './components/BtnDefaultMainColor';
+import InputSearch from './components/InputSearch';
+import GlobalStyle from './styles/global';
+import './styles/index.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <GlobalStyle/>
-      <BtnDefaultMainColor classList='btnBig'>
+      {/* <BtnDefaultMainColor classList='btnBig'>
         Abacaxi
       </BtnDefaultMainColor>
 
@@ -21,7 +22,8 @@ function App() {
 
       <BtnDefaultGreyColor classList='btnBig'>
         Uva
-      </BtnDefaultGreyColor>
+      </BtnDefaultGreyColor> */}
+      <InputSearch/>
     </div>
   );
 }
