@@ -1,12 +1,21 @@
-.btnCommon {
+.btnBig, .btnMed, .btnSmall {
     display: block;
-    padding: 11.5px 20px;
     border: none;
+    transition: 0.8s;
+}
+
+.btnBig, .btnMed {
     border-radius: var(--radius-1);
 }
 
+.btnBig {
+    padding: 11.5px 20px;
+}
+
+.btnMed {
+    padding: 10.5px 20px;
+}
+
 .btnSmall {
-    display: block;
-    border: none;
     background-color: none;
 }

@@ -1,12 +1,10 @@
 import { ButtonStyle } from "./styles";
 
-function BtnDefaultGreyColor({ action , children }) {
+function BtnDefaultGreyColor({ action , children, classList }) {
     return (
-        <div>
-            <ButtonStyle className="btnCommon" oncClick={() => action()}>
+        <ButtonStyle className={classList} oncClick={() => action()}>
                 {children}
-            </ButtonStyle>
-        </div>
+        </ButtonStyle>
     );
 };
 
