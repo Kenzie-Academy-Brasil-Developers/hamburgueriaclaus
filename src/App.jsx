@@ -1,5 +1,6 @@
 import BtnDefaultGreyColor from './components/BtnDefaultMainColor';
 import BtnDefaultMainColor from './components/BtnDefaultMainColor';
+import CardAll from './components/CardAll';
 import InputSearch from './components/InputSearch';
 import GlobalStyle from './styles/global';
 import './styles/index.css';
@@ -23,7 +24,8 @@ function App() {
       <BtnDefaultGreyColor classList='btnBig'>
         Uva
       </BtnDefaultGreyColor> */}
-      <InputSearch/>
+      {/* <InputSearch/> */}
+      <CardAll/>
     </div>
   );
 }
