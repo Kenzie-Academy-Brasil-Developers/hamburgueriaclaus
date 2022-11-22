@@ -12,7 +12,7 @@ function CardAll({ name , id, category , price , img , action }) {
                 <ProductNameStyle>{name}</ProductNameStyle>
                 <CategoryStyle>{category}</CategoryStyle>
                 <PriceStyle>{valueReal(price)}</PriceStyle>
-                <BtnDefaultMainColor classList='btnBig' action={() => action(id)}>Adicionar</BtnDefaultMainColor>
+                <BtnDefaultMainColor classList='btnBig' dataAction={id} action={action}>Adicionar</BtnDefaultMainColor>
             </CardInfoStyle>
         </CardStyle>
     );

@@ -1,70 +1,113 @@
+import { useEffect, useState } from 'react';
 import Aside from './components/Aside';
-import BtnDefaultGreyColor from './components/BtnDefaultMainColor';
-import BtnDefaultMainColor from './components/BtnDefaultMainColor';
-import CardAll from './components/CardAll';
-import CardCar from './components/CardCar';
 import Header from './components/Header';
-import InputSearch from './components/InputSearch';
 import ListProducts from './components/ListProducts';
 import Main from './components/Main';
 import GlobalStyle from './styles/global';
 import './styles/index.css';
+import imagePlaceholder from './assets/placeholderProduct.png';
+import api from './services/api';
+import DontFindItem from './components/DontFindItem';
+import InfoSearch from './components/InfoSearch';
 
 function App() {
-  const array = [
+  const [ currentList, setCurrentList ] = useState([
     {
-      id: 1,
-      name: "Hamburguer",
-      category: "Sanduíches",
-      price: 14,
-      img: "https://i.imgur.com/Vng6VzV.png"
-    },
-    {
-      id: 2,
-      name: "X-Burguer",
-      category: "Sanduíches",
-      price: 16,
-      img: "https://i.imgur.com/soOUeeW.png"
-    },
-    {
-      id: 3,
-      name: "Big Kenzie",
-      category: "Sanduíches",
-      price: 18,
-      img: "https://i.imgur.com/eEzZzcF.png"
-    },
-    {
-      id: 4,
-      name: "Fanta Guaraná",
-      category: "Bebidas",
-      price: 5,
-      img: "https://i.imgur.com/YuIbfCi.png"
-    },
-    {
-      id: 5,
-      name: "Coca-Cola",
-      category: "Bebidas",
-      price: 4.99,
-      img: "https://i.imgur.com/KC2ihEN.png"
-    },
-    {
-      id: 6,
-      name: "Milkshake Ovomaltine",
-      category: "Bebidas",
-      price: 4.99,
-      img: "https://i.imgur.com/iNkD4Pq.png"
+      id: 0,
+      name: 'Loading',
+      category: '...',
+      price: 0,
+      priceTotal: 0,
+      reactKey: Math.random(),
+      img: imagePlaceholder
     }
-  ]
-  function con() {
-    console.log("oi")
-  }
+  ]);
+  const [completeList, setCompleteList] = useState([]); 
+  const [itemDoesNotExist, setItemDoesNotExist] = useState(false);
+  const [isSearchFinish, setIsSearchFinish] = useState(false);
+  const [currentInfoSearch, setCurrentInfoSearch] = useState([]);
+  const [carList, setCarlist] = useState([]);
+
+  useEffect(() => {
+    api.get('products')
+      .then(response => {
+        const listFormatToReact = response.data.map((el) => {
+          el.reactKey = Math.random();
+          el.counter = 1;
+          el.priceTotal = el.price;
+          return el;
+        });
+        setCurrentList(listFormatToReact);
+        setCompleteList(listFormatToReact);
+
+      })
+      .catch(error => console.log(error))
+  }, []);
+    
+    
+
+  function removeCar(identifier) {
+    const currentCarWithOutHim = [...carList];
+    const position = carList.findIndex(({id}) => id === identifier);
+    currentCarWithOutHim.splice(position, 1);
+    setCarlist(currentCarWithOutHim);
+  };
+
+  function addCar(identifier) {
+    const visibleList = [...currentList];
+    const alreadyInCarList = carList.find(({id}) => id === identifier);
+    if (alreadyInCarList === undefined) {
+      const currentCarProduct = completeList.find(({id}) => id === identifier);
+      setCarlist([...carList, currentCarProduct]);
+    } else {
+      alreadyInCarList.counter += 1;
+      alreadyInCarList.priceTotal = alreadyInCarList.counter * alreadyInCarList.price;
+      const cleanList = carList.filter(({id}) => id !== identifier);
+      setCarlist([...cleanList, alreadyInCarList]);
+    };
+    setCurrentList(visibleList);
+  };
+
+  function removeAllCar() {
+    const ListHandle = currentList.map(el => {
+      el.priceTotal = el.price;
+      el.counter = 1;
+      return el
+    });
+    setCarlist([]);
+    setCurrentList(ListHandle);
+  };
+
+  function filterWithThisName(nameToSearch) {
+      setItemDoesNotExist(false);
+      const listFiltered = [...completeList].filter(({name}) => name.toLowerCase().includes(nameToSearch.toLowerCase()));
+      if (listFiltered.length === 0) {
+        setItemDoesNotExist(true);
+      } else {
+        setIsSearchFinish(true);
+        setCurrentList(listFiltered);
+        const info = { name: nameToSearch, many: listFiltered.length };
+        setCurrentInfoSearch([info]);
+      };
+  };
+
+  function stopSearch() {
+    setItemDoesNotExist(false);
+    setIsSearchFinish(false);
+    setCurrentList(completeList);
+  };
+
   return (
     <div className='App'>
       <GlobalStyle/>
-      <Header/>
+      <Header fun={filterWithThisName}/>
+        {isSearchFinish ? <InfoSearch action={stopSearch} name={currentInfoSearch[0].name} many={currentInfoSearch[0].many}/> : <></> }
       <Main>
-        <ListProducts ArrayProducts={array} fun={con}/>
-        <Aside listToBuy={array}/>
+          {
+            (itemDoesNotExist && <DontFindItem/>) ||
+            (<ListProducts ArrayProducts={currentList} fun={addCar}/>)
+          }
+        <Aside listToBuy={carList} action={removeCar} fun={removeAllCar}/>
       </Main>
     </div>
   );

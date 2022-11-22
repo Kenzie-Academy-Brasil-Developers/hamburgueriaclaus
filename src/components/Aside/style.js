@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const AsideStyle = styled.aside`
     animation: gotToLeft 1s ease forwards;
@@ -6,11 +6,13 @@ export const AsideStyle = styled.aside`
     top: 15px;
     width: 60%;
     min-width: 300px;
+    max-width: 400px;
     box-shadow: 0 0 10px var(--color-shadow);
     overflow: hidden;
     border-radius: var(--radius-2);
     @media (max-width: 900px) {
-        width: 100%;
+        width: 99%;
+        max-width: 99%;
     }
 `;
 

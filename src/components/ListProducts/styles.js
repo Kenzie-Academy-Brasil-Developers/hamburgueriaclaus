@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ListProductsStyles = styled.ul`
     display: flex;
@@ -10,6 +10,16 @@ export const ListProductsStyles = styled.ul`
         flex-direction: row;
         flex-wrap: nowrap;
         width: 100%;
+        height: 400px;
+        align-items: center;
         overflow-x: scroll;
+        ::-webkit-scrollbar-thumb {   
+            border-radius: 40px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 100px;
+        }
+        overflow-y: hidden;
     }
 `;

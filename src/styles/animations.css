@@ -19,14 +19,3 @@
         transform: translateX(0);
     }
 } 
-
-@keyframes gotToRightCardCar {
-    0% {
-        transform: translateX(-150px);
-    }
-
-    100% {
-        
-        transform: translateX(0);
-    }
-} 

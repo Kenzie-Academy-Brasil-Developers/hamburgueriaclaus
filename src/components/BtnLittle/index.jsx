@@ -1,8 +1,8 @@
 import { BtnStyle } from './styles';
 
-function BtnLittle({ action ,  children , classList }) {
+function BtnLittle({ action , dataAction , children , classList }) {
     return (
-        <BtnStyle className={classList} onClick={() => action()}>
+        <BtnStyle className={classList} onClick={() => action(dataAction)}>
             {children}
         </BtnStyle>
     );

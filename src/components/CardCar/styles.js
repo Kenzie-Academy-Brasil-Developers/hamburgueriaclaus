@@ -1,7 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CardStyle = styled.li`
-    animation: goToRightCardCar 0.5s ease forwards;
     display: flex;
     justify-content: space-between;
     transition: 0.8s;
@@ -38,12 +37,17 @@ export const ImgStyle = styled.img`
     object-fit: cover;
     max-width: 90%;
     max-height: 90%;
+    filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.3));
 `;
 
 export const ContainerCardInfoStyle = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    small {
+        font-size: 13px;
+    }
 `;
 
 export const ProductNameStyle = styled.h4`
