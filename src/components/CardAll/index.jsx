@@ -3,7 +3,6 @@ import BtnDefaultMainColor from '../BtnDefaultMainColor';
 import { CardStyle, CategoryStyle, ContainerImgStyle, CardInfoStyle, ImgStyle, ProductNameStyle, PriceStyle } from './styles';
 
 function CardAll({ name , id, category , price , img , action }) {
-    console.log(action)
     return (
         <CardStyle>
             <ContainerImgStyle>

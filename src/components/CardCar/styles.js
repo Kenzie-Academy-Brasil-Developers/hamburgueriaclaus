@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const CardStyle = styled.li`
-    animation: goToRightCardCar 0.5s ease forwards;
     display: flex;
     justify-content: space-between;
     transition: 0.8s;

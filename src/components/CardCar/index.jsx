@@ -1,7 +1,7 @@
 import BtnLittle from '../BtnLittle';
 import { CardDescriptionStyle, CardStyle, CategoryStyle, ContainerCardInfoStyle, ContainerImgStyle, ImgStyle, ProductNameStyle } from "./styles";
 
-function CardCar({ name , category , img , fun }) {
+function CardCar({ name , category , img , fun , id }) {
     return (
         <CardStyle>
             <CardDescriptionStyle>
@@ -13,7 +13,7 @@ function CardCar({ name , category , img , fun }) {
                     <CategoryStyle>{category}</CategoryStyle>
                 </ContainerCardInfoStyle>
             </CardDescriptionStyle>
-            <BtnLittle classList='btnSmall' action={fun}>Remover</BtnLittle>
+            <BtnLittle classList='btnSmall' action={fun} dataAction={id}>Remover</BtnLittle>
         </CardStyle>
     );
 };

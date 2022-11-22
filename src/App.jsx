@@ -17,6 +17,7 @@ function App() {
       name: 'Loading',
       category: '...',
       price: 0,
+      reactKey: Math.random(),
       img: imagePlaceholder
     }
   ]);
@@ -25,24 +26,34 @@ function App() {
   const [isSearchFinish, setIsSearchFinish] = useState(false);
   const [currentInfoSearch, setCurrentInfoSearch] = useState([]);
   const [carList, setCarlist] = useState([]);
+  
 
   useEffect(() => {
     api.get('products')
       .then(response => {
-        setCurrentList(response.data);
-        setCompleteList(response.data);
+        const listFormatToReact = response.data.map((el) => {
+          el.reactKey = Math.random();
+          return el;
+        });
+        setCurrentList(listFormatToReact);
+        setCompleteList(listFormatToReact);
       })
       .catch(error => console.log(error))
   }, []);
     
     
 
-
-  
+  function removeCar(identifier) {
+    const currentCarWithOutHim = [...carList];
+    const position = carList.findIndex(({id}) => id === identifier);
+    currentCarWithOutHim.splice(position, 1);
+    setCarlist(currentCarWithOutHim);
+  };
 
   function addCar(identifier) {
-    console.log(identifier)
-  }
+    const currentCarProduct = completeList.find(({id}) => id === identifier);
+    setCarlist([...carList, currentCarProduct]);
+  };
 
   function filterWithThisName(nameToSearch) {
       setItemDoesNotExist(false);
@@ -73,7 +84,7 @@ function App() {
             (itemDoesNotExist && <DontFindItem/>) ||
             (<ListProducts ArrayProducts={currentList} fun={addCar}/>)
           }
-        <Aside listToBuy={carList}/>
+        <Aside listToBuy={carList} action={removeCar}/>
       </Main>
     </div>
   );
