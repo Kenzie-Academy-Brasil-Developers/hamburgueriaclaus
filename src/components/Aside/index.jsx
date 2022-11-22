@@ -1,13 +1,8 @@
-import { useState } from 'react';
 import CardCar from '../CardCar';
 import CarTotal from '../CarTotal';
 import { AsideStyle, CarEmptyStyle, CarListStyle, CarStyle, HeadAsideStyle } from './style';
 
-function Aside({ action , listToBuy }) {
-    const [listKeys, setListKeys] = useState([]);
-    function handleProducts() {
-        
-    }
+function Aside({ action , listToBuy , fun }) {
     return (
         <AsideStyle>
             <HeadAsideStyle>
@@ -24,19 +19,12 @@ function Aside({ action , listToBuy }) {
                 : 
                 <>
                 <CarListStyle>
-                    
                     {
-                    listToBuy.map(({ name, category , img , id , reactKey }) => {
-                        if (listKeys.includes(reactKey) === false) {
-                            setListKeys([...listKeys, reactKey])
-                        } else {
-                            reactKey += Math.random();
-                        }
-                        return <CardCar key={reactKey} fun={action} name={name} category={category} img={img} id={id} />
-                    }
-                    )}
+                    listToBuy.map(({ name, category , img , id , counter, reactKey }) => 
+                        <CardCar key={reactKey} fun={action} name={name} category={category} counter={counter} img={img} id={id} />
+                    )}                    
                 </CarListStyle>
-                <CarTotal listToBuy={listToBuy}/> 
+                <CarTotal listToBuy={listToBuy} action={fun}/> 
                 </>
                  }
             </CarStyle>

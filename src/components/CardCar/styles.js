@@ -44,6 +44,10 @@ export const ContainerCardInfoStyle = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    small {
+        font-size: 13px;
+    }
 `;
 
 export const ProductNameStyle = styled.h4`

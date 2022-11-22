@@ -17,6 +17,7 @@ function App() {
       name: 'Loading',
       category: '...',
       price: 0,
+      priceTotal: 0,
       reactKey: Math.random(),
       img: imagePlaceholder
     }
@@ -26,17 +27,19 @@ function App() {
   const [isSearchFinish, setIsSearchFinish] = useState(false);
   const [currentInfoSearch, setCurrentInfoSearch] = useState([]);
   const [carList, setCarlist] = useState([]);
-  
 
   useEffect(() => {
     api.get('products')
       .then(response => {
         const listFormatToReact = response.data.map((el) => {
           el.reactKey = Math.random();
+          el.counter = 1;
+          el.priceTotal = el.price;
           return el;
         });
         setCurrentList(listFormatToReact);
         setCompleteList(listFormatToReact);
+
       })
       .catch(error => console.log(error))
   }, []);
@@ -51,13 +54,33 @@ function App() {
   };
 
   function addCar(identifier) {
-    const currentCarProduct = completeList.find(({id}) => id === identifier);
-    setCarlist([...carList, currentCarProduct]);
+    const visibleList = [...currentList];
+    const alreadyInCarList = carList.find(({id}) => id === identifier);
+    if (alreadyInCarList === undefined) {
+      const currentCarProduct = completeList.find(({id}) => id === identifier);
+      setCarlist([...carList, currentCarProduct]);
+    } else {
+      alreadyInCarList.counter += 1;
+      alreadyInCarList.priceTotal = alreadyInCarList.counter * alreadyInCarList.price;
+      const cleanList = carList.filter(({id}) => id !== identifier);
+      setCarlist([...cleanList, alreadyInCarList]);
+    };
+    setCurrentList(visibleList);
+  };
+
+  function removeAllCar() {
+    const ListHandle = currentList.map(el => {
+      el.priceTotal = el.price;
+      el.counter = 1;
+      return el
+    });
+    setCarlist([]);
+    setCurrentList(ListHandle);
   };
 
   function filterWithThisName(nameToSearch) {
       setItemDoesNotExist(false);
-      const listFiltered = completeList.filter(({name}) => name.toLowerCase().includes(nameToSearch.toLowerCase()));
+      const listFiltered = [...completeList].filter(({name}) => name.toLowerCase().includes(nameToSearch.toLowerCase()));
       if (listFiltered.length === 0) {
         setItemDoesNotExist(true);
       } else {
@@ -84,7 +107,7 @@ function App() {
             (itemDoesNotExist && <DontFindItem/>) ||
             (<ListProducts ArrayProducts={currentList} fun={addCar}/>)
           }
-        <Aside listToBuy={carList} action={removeCar}/>
+        <Aside listToBuy={carList} action={removeCar} fun={removeAllCar}/>
       </Main>
     </div>
   );
