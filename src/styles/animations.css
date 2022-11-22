@@ -1,0 +1,32 @@
+@keyframes gotToLeft {
+    0% {
+        transform: translateX(+50px);
+    }
+
+    100% {
+        
+        transform: translateX(0);
+    }
+} 
+
+@keyframes gotToRight {
+    0% {
+        transform: translateX(-50px);
+    }
+
+    100% {
+        
+        transform: translateX(0);
+    }
+} 
+
+@keyframes gotToRightCardCar {
+    0% {
+        transform: translateX(-150px);
+    }
+
+    100% {
+        
+        transform: translateX(0);
+    }
+} 
