@@ -9,6 +9,7 @@ export const ContainerInputStyle = styled.div`
     width: 365px;
     padding: 10px 15px;
     transition: 0.6s;
+    background-color: var(--white-0);
 
     :focus-within {
         border-color: var(--gray-100);
@@ -16,6 +17,7 @@ export const ContainerInputStyle = styled.div`
 
     @media (max-width: 900px) {
         width: 100%;
+        margin-top: 14px;
     }
 `;
 

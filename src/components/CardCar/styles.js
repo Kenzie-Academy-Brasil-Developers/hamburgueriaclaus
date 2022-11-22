@@ -1,8 +1,20 @@
 import styled from "styled-components";
 
 export const CardStyle = styled.li`
+    animation: goToRightCardCar 0.5s ease forwards;
     display: flex;
     justify-content: space-between;
+    transition: 0.8s;
+    background-color: transparent;
+    border-radius: var(--radius-2);
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    padding: 10px;
+    :hover {
+        border-color:  var(--color-primary);
+        background-color: var(--white-0);
+        
+    }
 `;
 
 export const ContainerImgStyle = styled.picture`
@@ -11,6 +23,8 @@ export const ContainerImgStyle = styled.picture`
     justify-content: center;
     width: 80px;
     height: 80px;
+    min-width: 80px;
+    min-height: 80px;
     background-color: var(--gray-20);
     border-radius: var(--radius-2);
     margin-right: 10px;

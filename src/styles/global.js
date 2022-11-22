@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
         --fb-warn: #FFCD07;
         --fb-success: #168821;
         --fb-info: #155BCB;
+        --color-shadow: #00000033; 
 
         --radius-1: 8px;
         --radius-2: 5px;
@@ -30,10 +31,34 @@ const GlobalStyle = createGlobalStyle`
         --font-family-default: 'Inter', sans-serif;
     }
 
-    .container {
-        margin: 0 auto;
-        max-width: 1200px;
+    ::-webkit-scrollbar {
+        width: 10px;
+    } 
+
+    ::-webkit-scrollbar-thumb:hover { 
+        background-color: var(--color-primary-50);    
     }
+
+    ::-webkit-scrollbar-thumb:not(:hover) {   
+        background-color: var(--color-primary);   
+    }
+
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background-color: var(--gray-50);
+    }
+
+    .container {
+        margin: 0 115px;
+        max-width: 1300px;
+    }
+
+    @media(max-width: 900px) {
+        .container {
+            margin: 0 16px;
+        }
+    }
+
+    
 `;
 
 export default GlobalStyle;
