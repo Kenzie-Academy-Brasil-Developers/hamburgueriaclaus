@@ -5,7 +5,7 @@ export const BtnStyle = styled.button`
     margin-top: 5px;
     transition: 0.5s;
     border-bottom: 2px solid transparent;
-
+    padding: 0;
     :hover {
         color: var(--gray-100);
         border-bottom-color: var(--gray-100);

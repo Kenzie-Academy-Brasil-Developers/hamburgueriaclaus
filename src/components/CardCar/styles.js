@@ -8,7 +8,8 @@ export const CardStyle = styled.li`
     background-color: transparent;
     border-radius: var(--radius-2);
     border: 2px solid transparent;
-
+    box-sizing: border-box;
+    padding: 10px;
     :hover {
         border-color:  var(--color-primary);
         background-color: var(--white-0);

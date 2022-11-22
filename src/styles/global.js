@@ -31,7 +31,21 @@ const GlobalStyle = createGlobalStyle`
         --font-family-default: 'Inter', sans-serif;
     }
 
+    ::-webkit-scrollbar {
+        width: 10px;
+    } 
 
+    ::-webkit-scrollbar-thumb:hover { 
+        background-color: var(--color-primary-50);    
+    }
+
+    ::-webkit-scrollbar-thumb:not(:hover) {   
+        background-color: var(--color-primary);   
+    }
+
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background-color: var(--gray-50);
+    }
 
     .container {
         margin: 0 115px;
