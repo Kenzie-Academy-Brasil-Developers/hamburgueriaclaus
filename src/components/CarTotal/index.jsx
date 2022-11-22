@@ -7,7 +7,7 @@ function CarTotal({ listToBuy }) {
         <CarTotalStyle>
             <TotalPriceInfoStyle>
                 <h3>Total</h3>
-                <h4>{valueReal(listToBuy.reduce((acc, cur) => (acc.price || acc) + cur.price))}</h4>
+                <h4>{valueReal(listToBuy.length > 1 ? listToBuy.reduce((acc, cur) => (acc.price || acc) + cur.price) : listToBuy[0].price)}</h4>
             </TotalPriceInfoStyle>
             <BtnDefaultGreyColor classList='btnBig'>
                 Remover todos

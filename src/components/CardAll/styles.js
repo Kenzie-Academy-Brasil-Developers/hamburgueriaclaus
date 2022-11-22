@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardStyle = styled.li`
     border: 2px solid var(--gray-20);
-    width: 230px;
+    width: 250px;
     height: max-content;
     border-radius: var(--radius-2);
     overflow: hidden;
@@ -13,6 +13,10 @@ export const CardStyle = styled.li`
     :hover {
         transform: scale(1.1);
         border-color: var(--color-primary);
+    }
+
+    @media(max-width: 900px) {
+        width: 300px;
     }
 `;
 
@@ -37,6 +41,7 @@ export const ImgStyle = styled.img`
     object-fit: cover;
     max-width: 90%;
     max-height: 90%;
+    filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.3));
 `;
 
 export const ProductNameStyle = styled.h3`

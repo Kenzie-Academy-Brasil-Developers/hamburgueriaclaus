@@ -4,21 +4,20 @@ import CarTotal from '../CarTotal';
 import { AsideStyle, CarEmptyStyle, CarListStyle, CarStyle, HeadAsideStyle } from './style';
 
 function Aside({ action , listToBuy }) {
-    const [isCarEmpty, setCarEmpty] = useState(false);
-    
     return (
         <AsideStyle>
             <HeadAsideStyle>
                 <h2>Carrinho de compras</h2>
             </HeadAsideStyle>
             <CarStyle>
-                {(isCarEmpty && 
+                {
+                listToBuy.length === 0 ? 
                 <CarEmptyStyle>
                    <h3>Sua sacola está vazia</h3>
                    <legend>Adicione itens</legend>
-                </CarEmptyStyle>)
+                </CarEmptyStyle>
                 
-                || (
+                : 
                 <>
                 <CarListStyle>
                     {listToBuy.map(({ name, category , img , fun, id }) => 
@@ -27,7 +26,7 @@ function Aside({ action , listToBuy }) {
                 </CarListStyle>
                 <CarTotal listToBuy={listToBuy}/> 
                 </>
-                )  }
+                 }
             </CarStyle>
         </AsideStyle>
     );

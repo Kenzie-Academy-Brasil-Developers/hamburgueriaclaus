@@ -11,5 +11,15 @@ export const ListProductsStyles = styled.ul`
         flex-wrap: nowrap;
         width: 100%;
         overflow-x: scroll;
+
+        @media(max-width: 900px) {
+        ::-webkit-scrollbar-thumb {   
+            border-radius: 40px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 100px;
+        } 
+    }
     }
 `;

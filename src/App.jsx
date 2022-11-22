@@ -1,70 +1,79 @@
+import { useEffect, useState } from 'react';
 import Aside from './components/Aside';
-import BtnDefaultGreyColor from './components/BtnDefaultMainColor';
-import BtnDefaultMainColor from './components/BtnDefaultMainColor';
-import CardAll from './components/CardAll';
-import CardCar from './components/CardCar';
 import Header from './components/Header';
-import InputSearch from './components/InputSearch';
 import ListProducts from './components/ListProducts';
 import Main from './components/Main';
 import GlobalStyle from './styles/global';
 import './styles/index.css';
+import imagePlaceholder from './assets/placeholderProduct.png';
+import api from './services/api';
+import DontFindItem from './components/DontFindItem';
+import InfoSearch from './components/InfoSearch';
 
 function App() {
-  const array = [
+  const [ currentList, setCurrentList ] = useState([
     {
-      id: 1,
-      name: "Hamburguer",
-      category: "Sanduíches",
-      price: 14,
-      img: "https://i.imgur.com/Vng6VzV.png"
-    },
-    {
-      id: 2,
-      name: "X-Burguer",
-      category: "Sanduíches",
-      price: 16,
-      img: "https://i.imgur.com/soOUeeW.png"
-    },
-    {
-      id: 3,
-      name: "Big Kenzie",
-      category: "Sanduíches",
-      price: 18,
-      img: "https://i.imgur.com/eEzZzcF.png"
-    },
-    {
-      id: 4,
-      name: "Fanta Guaraná",
-      category: "Bebidas",
-      price: 5,
-      img: "https://i.imgur.com/YuIbfCi.png"
-    },
-    {
-      id: 5,
-      name: "Coca-Cola",
-      category: "Bebidas",
-      price: 4.99,
-      img: "https://i.imgur.com/KC2ihEN.png"
-    },
-    {
-      id: 6,
-      name: "Milkshake Ovomaltine",
-      category: "Bebidas",
-      price: 4.99,
-      img: "https://i.imgur.com/iNkD4Pq.png"
+      id: 0,
+      name: 'Loading',
+      category: '...',
+      price: 0,
+      img: imagePlaceholder
     }
-  ]
-  function con() {
-    console.log("oi")
+  ]);
+  const [completeList, setCompleteList] = useState([]); 
+  const [itemDoesNotExist, setItemDoesNotExist] = useState(false);
+  const [isSearchFinish, setIsSearchFinish] = useState(false);
+  const [currentInfoSearch, setCurrentInfoSearch] = useState([]);
+  const [carList, setCarlist] = useState([]);
+
+  useEffect(() => {
+    api.get('products')
+      .then(response => {
+        setCurrentList(response.data);
+        setCompleteList(response.data);
+      })
+      .catch(error => console.log(error))
+  }, []);
+    
+    
+
+
+  
+
+  function addCar(identifier) {
+    console.log(identifier)
   }
+
+  function filterWithThisName(nameToSearch) {
+      setItemDoesNotExist(false);
+      const listFiltered = completeList.filter(({name}) => name.toLowerCase().includes(nameToSearch.toLowerCase()));
+      if (listFiltered.length === 0) {
+        setItemDoesNotExist(true);
+      } else {
+        setIsSearchFinish(true);
+        setCurrentList(listFiltered);
+        const info = { name: nameToSearch, many: listFiltered.length };
+        setCurrentInfoSearch([info]);
+      };
+  };
+
+  function stopSearch() {
+    setItemDoesNotExist(false);
+    setIsSearchFinish(false);
+    setCurrentList(completeList);
+  };
+
   return (
     <div className='App'>
       <GlobalStyle/>
-      <Header/>
+      <Header fun={filterWithThisName}/>
+        {isSearchFinish ? <InfoSearch action={stopSearch} name={currentInfoSearch[0].name} many={currentInfoSearch[0].many}/> : <></> }
       <Main>
-        <ListProducts ArrayProducts={array} fun={con}/>
-        <Aside listToBuy={array}/>
+          {
+            (itemDoesNotExist && <DontFindItem/>) ||
+            (<ListProducts ArrayProducts={currentList} fun={addCar}/>)
+          }
+        <Aside listToBuy={carList}/>
       </Main>
     </div>
   );

@@ -6,6 +6,7 @@ export const AsideStyle = styled.aside`
     top: 15px;
     width: 60%;
     min-width: 300px;
+    max-width: 400px;
     box-shadow: 0 0 10px var(--color-shadow);
     overflow: hidden;
     border-radius: var(--radius-2);

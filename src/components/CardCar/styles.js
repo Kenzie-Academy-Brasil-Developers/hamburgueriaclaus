@@ -38,6 +38,7 @@ export const ImgStyle = styled.img`
     object-fit: cover;
     max-width: 90%;
     max-height: 90%;
+    filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.3));
 `;
 
 export const ContainerCardInfoStyle = styled.div`
