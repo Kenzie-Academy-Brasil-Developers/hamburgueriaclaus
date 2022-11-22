@@ -11,7 +11,8 @@ export const AsideStyle = styled.aside`
     overflow: hidden;
     border-radius: var(--radius-2);
     @media (max-width: 900px) {
-        width: 100%;
+        width: 99%;
+        max-width: 99%;
     }
 `;
 
