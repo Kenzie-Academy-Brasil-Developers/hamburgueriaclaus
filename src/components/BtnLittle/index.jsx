@@ -1,4 +1,4 @@
-import { BtnStyle } from "./styles";
+import { BtnStyle } from './styles';
 
 function BtnLittle({ action ,  children , classList }) {
     return (

@@ -1,8 +1,8 @@
-import { valueReal } from "../../generalFunctions";
-import BtnDefaultMainColor from "../BtnDefaultMainColor";
-import { CardStyle, CategoryStyle, ContainerImgStyle, CardInfoStyle, ImgStyle, ProductNameStyle, PriceStyle } from "./styles";
+import { valueReal } from '../../generalFunctions';
+import BtnDefaultMainColor from '../BtnDefaultMainColor';
+import { CardStyle, CategoryStyle, ContainerImgStyle, CardInfoStyle, ImgStyle, ProductNameStyle, PriceStyle } from './styles';
 
-function CardAll({ name , category , price , img }) {
+function CardAll({ name , id, category , price , img , action }) {
     return (
         <CardStyle>
             <ContainerImgStyle>
@@ -12,7 +12,7 @@ function CardAll({ name , category , price , img }) {
                 <ProductNameStyle>{name}</ProductNameStyle>
                 <CategoryStyle>{category}</CategoryStyle>
                 <PriceStyle>{valueReal(price)}</PriceStyle>
-                <BtnDefaultMainColor classList='btnBig'>Adicionar</BtnDefaultMainColor>
+                <BtnDefaultMainColor classList='btnBig' action={() => action(id)}>Adicionar</BtnDefaultMainColor>
             </CardInfoStyle>
         </CardStyle>
     );

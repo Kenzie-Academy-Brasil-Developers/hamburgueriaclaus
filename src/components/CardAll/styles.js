@@ -2,10 +2,17 @@ import styled from "styled-components";
 
 export const CardStyle = styled.li`
     border: 2px solid var(--gray-20);
-    width: 300px;
-    height: 346px;
+    width: 250px;
+    height: max-content;
     border-radius: var(--radius-2);
     overflow: hidden;
+    flex-shrink: 0;
+    transition: 0.8s;
+
+    :hover {
+        transform: scale(1.1);
+        border-color: var(--gray-100);
+    }
 `;
 
 export const CardInfoStyle= styled.div`
@@ -20,7 +27,7 @@ export const ContainerImgStyle = styled.picture`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 300px;
+    width: 100%;
     height: 150px;
     background-color: var(--gray-0);
 `;

@@ -31,9 +31,17 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .container {
-        margin: 0 auto;
-        max-width: 1200px;
+        margin: 0 115px;
+        max-width: 1300px;
     }
+
+    @media(max-width: 900px) {
+        .container {
+            margin: 0 16px;
+        }
+    }
+
+    
 `;
 
 export default GlobalStyle;

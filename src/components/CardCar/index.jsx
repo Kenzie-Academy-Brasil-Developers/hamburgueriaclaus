@@ -1,4 +1,4 @@
-import BtnLittle from "../BtnLittle";
+import BtnLittle from '../BtnLittle';
 import { CardDescriptionStyle, CardStyle, CategoryStyle, ContainerCardInfoStyle, ContainerImgStyle, ImgStyle, ProductNameStyle } from "./styles";
 
 function CardCar({ name , category , img , fun }) {
