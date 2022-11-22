@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const AsideStyle = styled.aside`
     animation: gotToLeft 1s ease forwards;

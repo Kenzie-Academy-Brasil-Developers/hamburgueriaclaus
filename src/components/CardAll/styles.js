@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CardStyle = styled.li`
     border: 2px solid var(--gray-20);

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ListProductsStyles = styled.ul`
     display: flex;
