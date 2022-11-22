@@ -4,6 +4,7 @@ export const ListProductsStyles = styled.ul`
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    animation: gotToRight 1s ease forwards;
 
     @media(max-width: 900px) {
         flex-direction: row;

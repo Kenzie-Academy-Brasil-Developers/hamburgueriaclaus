@@ -4,6 +4,7 @@ export const HeaderStyle = styled.header`
     background-color: var(--gray-0);
     padding: 10px 0;
     margin-bottom: 25px;
+    box-shadow: 0 0 10px var(--color-shadow);
 `;
 
 export const ContainerHeadStyle = styled.div`
@@ -11,6 +12,7 @@ export const ContainerHeadStyle = styled.div`
     align-items: center;
     justify-content: space-between;
     margin: 0 115px;
+    max-width: 1300px;
 
     @media(max-width: 900px) {
         flex-direction: column;

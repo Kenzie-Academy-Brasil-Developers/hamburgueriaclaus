@@ -2,16 +2,17 @@ import styled from "styled-components";
 
 export const CardStyle = styled.li`
     border: 2px solid var(--gray-20);
-    width: 250px;
+    width: 230px;
     height: max-content;
     border-radius: var(--radius-2);
     overflow: hidden;
     flex-shrink: 0;
     transition: 0.8s;
+    box-shadow: 0 0 10px var(--color-shadow);
 
     :hover {
         transform: scale(1.1);
-        border-color: var(--gray-100);
+        border-color: var(--color-primary);
     }
 `;
 

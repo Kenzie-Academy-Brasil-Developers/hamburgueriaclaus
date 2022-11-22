@@ -64,7 +64,7 @@ function App() {
       <Header/>
       <Main>
         <ListProducts ArrayProducts={array} fun={con}/>
-        <Aside/>
+        <Aside listToBuy={array}/>
       </Main>
     </div>
   );

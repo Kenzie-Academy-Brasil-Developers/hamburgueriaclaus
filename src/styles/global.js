@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
         --fb-warn: #FFCD07;
         --fb-success: #168821;
         --fb-info: #155BCB;
+        --color-shadow: #00000033; 
 
         --radius-1: 8px;
         --radius-2: 5px;
@@ -29,6 +30,8 @@ const GlobalStyle = createGlobalStyle`
 
         --font-family-default: 'Inter', sans-serif;
     }
+
+
 
     .container {
         margin: 0 115px;
