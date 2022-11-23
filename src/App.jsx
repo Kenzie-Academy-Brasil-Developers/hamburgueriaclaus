@@ -41,16 +41,22 @@ function App() {
         setCompleteList(listFormatToReact);
 
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log(error));
   }, []);
     
     
 
   function removeCar(identifier) {
-    const currentCarWithOutHim = [...carList];
-    const position = carList.findIndex(({id}) => id === identifier);
-    currentCarWithOutHim.splice(position, 1);
-    setCarlist(currentCarWithOutHim);
+    const visibleList = [...currentList];
+    const ListHandle = carList.filter(({id}) => id !== identifier);
+    const productToRemove = carList.find((({id}) => id === identifier));
+    if (productToRemove.counter > 1) {
+      productToRemove.counter -= 1;
+      productToRemove.priceTotal = productToRemove.price * productToRemove.counter;
+      ListHandle.push(productToRemove);
+    }
+    setCarlist(ListHandle);
+    setCurrentList(visibleList);
   };
 
   function addCar(identifier) {
