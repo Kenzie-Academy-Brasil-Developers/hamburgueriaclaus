@@ -1,8 +1,13 @@
+import { useContext } from 'react';
+import { BaseContext } from '../../contexts/Base';
 import CardCar from '../CardCar';
 import CarTotal from '../CarTotal';
 import { AsideStyle, CarEmptyStyle, CarListStyle, CarStyle, HeadAsideStyle } from './style';
 
-function Aside({ action , listToBuy , fun }) {
+function Aside() {
+    const {
+        carList
+    } = useContext(BaseContext);
     return (
         <AsideStyle>
             <HeadAsideStyle>
@@ -10,7 +15,7 @@ function Aside({ action , listToBuy , fun }) {
             </HeadAsideStyle>
             <CarStyle>
                 {
-                listToBuy.length === 0 ? 
+                carList.length === 0 ? 
                 <CarEmptyStyle>
                    <h3>Sua sacola está vazia</h3>
                    <legend>Adicione itens</legend>
@@ -20,11 +25,11 @@ function Aside({ action , listToBuy , fun }) {
                 <>
                 <CarListStyle>
                     {
-                    listToBuy.map(({ name, category , img , id , counter, reactKey }) => 
-                        <CardCar key={reactKey} fun={action} name={name} category={category} counter={counter} img={img} id={id} />
+                    carList.map(({ name, category , img , id , counter, reactKey }) => 
+                        <CardCar key={reactKey} name={name} category={category} counter={counter} img={img} id={id} />
                     )}                    
                 </CarListStyle>
-                <CarTotal listToBuy={listToBuy} action={fun}/> 
+                <CarTotal/> 
                 </>
                  }
             </CarStyle>
