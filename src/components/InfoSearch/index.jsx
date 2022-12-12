@@ -1,13 +1,13 @@
 import { InfoStyle } from "./style";
 import BtnDefaultMainColor from "../BtnDefaultMainColor";
 import { useContext } from "react";
-import { BaseContext } from "../../contexts/Base";
+import { CartContext } from "../../contexts/CartContext";
 
 function InfoSearch({ many , name , action }) {
     const { 
         stopSearch,
         currentInfoSearch,
-     } = useContext(BaseContext);
+     } = useContext(CartContext);
     return (
     <InfoStyle className="container">
         <h2><span>{currentInfoSearch[0].many}</span> {currentInfoSearch[0].many === 1? 'resultado' : 'resultados'} para: <span>{currentInfoSearch[0].name}</span></h2>

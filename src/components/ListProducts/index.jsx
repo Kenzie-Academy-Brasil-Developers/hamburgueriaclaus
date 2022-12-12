@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { BaseContext } from "../../contexts/Base";
+import { CartContext } from "../../contexts/CartContext";
 import CardAll from "../CardAll";
 import { ListProductsStyles } from "./styles";
 
 function ListProducts() {
     const {
         currentList
-    } = useContext(BaseContext);
+    } = useContext(CartContext);
     return (
         <ListProductsStyles>
             {currentList.map(({ name , id , category , price, img , reactKey }) => 

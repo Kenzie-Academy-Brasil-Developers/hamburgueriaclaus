@@ -1,6 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
+import { Animations } from './Animations';
+import { Buttons } from './Buttons';
+import { Inputs } from './Inputs';
+import { Reset } from './Reset';
+import { Typograph } from './Typograph';
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
+    ${() => Reset};
     :root {
 
         --color-primary: #27AE60;
@@ -57,8 +63,9 @@ const GlobalStyle = createGlobalStyle`
             margin: 0 16px;
         }
     }
-
-    
+    ${() => Animations};
+    ${() => Buttons};
+    ${() => Inputs};
+    ${() => Typograph};
+   
 `;
-
-export default GlobalStyle;

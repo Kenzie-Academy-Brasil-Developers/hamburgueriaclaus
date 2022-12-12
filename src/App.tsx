@@ -1,29 +1,18 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import Aside from './components/Aside';
 import Header from './components/Header';
 import ListProducts from './components/ListProducts';
 import Main from './components/Main';
-import GlobalStyle from './styles/global';
-import './styles/index.css';
-
-import api from './services/api';
+import { GlobalStyle } from './styles/Global';
 import DontFindItem from './components/DontFindItem';
 import InfoSearch from './components/InfoSearch';
-import { BaseContext } from './contexts/Base';
+import { CartContext } from './contexts/CartContext';
 
-function App() {
+export function App() {
   const {
-    currentList, 
-    filterWithThisName,
     isSearchFinish,
-    stopSearch,
-    currentInfoSearch,
     itemDoesNotExist,
-    carList,
-    removeCar,
-    addCar,
-    removeAllCar
-} = useContext(BaseContext);
+  } = useContext(CartContext);
 
   return (
     <div className='App'>
@@ -40,5 +29,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

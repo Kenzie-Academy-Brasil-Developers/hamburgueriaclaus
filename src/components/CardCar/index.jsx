@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import { BaseContext } from '../../contexts/Base';
+import { CartContext } from '../../contexts/CartContext';
 import BtnLittle from '../BtnLittle';
 import { CardDescriptionStyle, CardStyle, CategoryStyle, ContainerCardInfoStyle, ContainerImgStyle, ImgStyle, ProductNameStyle } from "./styles";
 
 function CardCar({ name , category , img , id , counter }) {
     const { 
         removeCar
-    } = useContext(BaseContext);
+    } = useContext(CartContext);
     return (
         <CardStyle>
             <CardDescriptionStyle>

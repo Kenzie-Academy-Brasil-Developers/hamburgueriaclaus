@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { BaseContext } from '../../contexts/Base';
+import { CartContext } from '../../contexts/CartContext';
 import { valueReal } from '../../generalFunctions';
 import BtnDefaultMainColor from '../BtnDefaultMainColor';
 import { CardStyle, CategoryStyle, ContainerImgStyle, CardInfoStyle, ImgStyle, ProductNameStyle, PriceStyle } from './styles';
@@ -7,7 +7,7 @@ import { CardStyle, CategoryStyle, ContainerImgStyle, CardInfoStyle, ImgStyle, P
 function CardAll({ name , id, category , price , img}) {
     const {
         addCar
-    } = useContext(BaseContext);
+    } = useContext(CartContext);
     return (
         <CardStyle>
             <ContainerImgStyle>

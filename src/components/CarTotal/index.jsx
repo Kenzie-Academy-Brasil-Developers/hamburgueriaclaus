@@ -2,13 +2,13 @@ import { valueReal } from '../../generalFunctions';
 import { CarTotalStyle, TotalPriceInfoStyle } from './styles';
 import BtnDefaultGreyColor from '../BtnDefaultGreyColor';
 import { useContext } from 'react';
-import { BaseContext } from '../../contexts/Base';
+import { CartContext } from '../../contexts/CartContext';
 
 function CarTotal() {
     const {
         carList,
         removeAllCar
-    } = useContext(BaseContext);
+    } = useContext(CartContext);
     return (
         <CarTotalStyle>
             <TotalPriceInfoStyle>

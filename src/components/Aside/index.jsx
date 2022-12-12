@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { BaseContext } from '../../contexts/Base';
+import { CartContext } from '../../contexts/CartContext';
 import CardCar from '../CardCar';
 import CarTotal from '../CarTotal';
 import { AsideStyle, CarEmptyStyle, CarListStyle, CarStyle, HeadAsideStyle } from './style';
@@ -7,7 +7,7 @@ import { AsideStyle, CarEmptyStyle, CarListStyle, CarStyle, HeadAsideStyle } fro
 function Aside() {
     const {
         carList
-    } = useContext(BaseContext);
+    } = useContext(CartContext);
     return (
         <AsideStyle>
             <HeadAsideStyle>

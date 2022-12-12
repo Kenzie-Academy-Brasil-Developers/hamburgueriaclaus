@@ -1,11 +1,11 @@
 import { useContext, useState } from 'react';
-import { BaseContext } from '../../contexts/Base';
+import { CartContext } from '../../contexts/CartContext';
 import BtnDefaultMainColor from '../BtnDefaultMainColor';
 import { ContainerInputStyle, InputStyle } from './styles';
 
 function InputSearch({ fun }) {
     const [valueInput, setValueInput] = useState('');
-    const { filterWithThisName } = useContext(BaseContext);
+    const { filterWithThisName } = useContext(CartContext);
     return(
         <ContainerInputStyle>
             <InputStyle placeholder='Digite para pesquisar' onChange={(event) => setValueInput(event.target.value)}/>
