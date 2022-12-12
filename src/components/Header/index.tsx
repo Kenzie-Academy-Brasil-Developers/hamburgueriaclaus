@@ -1,8 +1,8 @@
 import { ContainerHeadStyle, HeaderStyle } from './styles';
 import logo from '../../assets/logo.svg';
-import InputSearch from '../InputSearch';
+import { InputSearch } from '../InputSearch';
 
-function Header() {
+export function Header() {
     return (
         <HeaderStyle>
             <ContainerHeadStyle>
@@ -12,5 +12,3 @@ function Header() {
         </HeaderStyle>
     );
 };
-
-export default Header;

@@ -1,9 +1,17 @@
 import { useContext } from 'react';
 import { CartContext } from '../../contexts/CartContext';
-import BtnLittle from '../BtnLittle';
+import { BtnLittle } from '../BtnLittle';
 import { CardDescriptionStyle, CardStyle, CategoryStyle, ContainerCardInfoStyle, ContainerImgStyle, ImgStyle, ProductNameStyle } from "./styles";
 
-function CardCar({ name , category , img , id , counter }) {
+interface iCardProps {
+    name: string;
+    category: string;
+    img: string;
+    id: number;
+    counter?: number;
+}
+
+export function CardCar({ name , category , img , id , counter }: iCardProps) {
     const { 
         removeCar
     } = useContext(CartContext);
@@ -19,9 +27,7 @@ function CardCar({ name , category , img , id , counter }) {
                     <small>{counter}</small>
                 </ContainerCardInfoStyle>
             </CardDescriptionStyle>
-            <BtnLittle classList='btnSmall' action={removeCar} dataAction={id}>Remover</BtnLittle>
+            <BtnLittle classList='btnSmall' action={() => removeCar(id)} dataAction={id}>Remover</BtnLittle>
         </CardStyle>
     );
 };
-
-export default CardCar;

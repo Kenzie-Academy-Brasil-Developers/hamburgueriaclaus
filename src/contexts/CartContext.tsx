@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import api from "../services/api";
+import { api } from "../services/api";
 import imagePlaceholder from '../assets/placeholderProduct.png';
 
 interface iCartProps {

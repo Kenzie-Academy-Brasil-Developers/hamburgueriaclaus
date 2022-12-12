@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { CartContext } from '../../contexts/CartContext';
-import CardCar from '../CardCar';
-import CarTotal from '../CarTotal';
+import { CardCar } from '../CardCar';
+import { CarTotal } from '../CarTotal';
 import { AsideStyle, CarEmptyStyle, CarListStyle, CarStyle, HeadAsideStyle } from './style';
 
-function Aside() {
+export function Aside() {
     const {
         carList
     } = useContext(CartContext);
@@ -36,5 +36,3 @@ function Aside() {
         </AsideStyle>
     );
 };
-
-export default Aside;

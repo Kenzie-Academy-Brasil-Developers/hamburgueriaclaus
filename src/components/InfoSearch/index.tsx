@@ -1,9 +1,9 @@
 import { InfoStyle } from "./style";
-import BtnDefaultMainColor from "../BtnDefaultMainColor";
+import { BtnDefaultMainColor } from "../BtnDefaultMainColor";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
-function InfoSearch({ many , name , action }) {
+export function InfoSearch() {
     const { 
         stopSearch,
         currentInfoSearch,
@@ -15,5 +15,3 @@ function InfoSearch({ many , name , action }) {
     </InfoStyle>
     );
 };
-
-export default InfoSearch;

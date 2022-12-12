@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
-import CardAll from "../CardAll";
+import { CardAll } from "../CardAll";
 import { ListProductsStyles } from "./styles";
 
-function ListProducts() {
+export function ListProducts() {
     const {
         currentList
     } = useContext(CartContext);
@@ -15,5 +15,3 @@ function ListProducts() {
         </ListProductsStyles>
     )
 };
-
-export default ListProducts;

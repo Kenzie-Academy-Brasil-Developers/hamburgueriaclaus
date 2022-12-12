@@ -9,8 +9,6 @@ export const CarTotalStyle = styled.div`
 
 `;
 
-
-
 export const TotalPriceInfoStyle = styled.div`
     display: flex;
     align-items: center;
