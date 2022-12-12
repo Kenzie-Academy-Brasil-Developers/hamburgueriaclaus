@@ -11,13 +11,15 @@ export const ContainerHeadStyle = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 115px;
+    margin: 0 auto;
     max-width: 1300px;
+    padding: 0 114px;
 
     @media(max-width: 900px) {
         flex-direction: column;
         align-items: center;
         width: 85%;
         margin: 15px auto;
+        padding: 0;
     }
 `;

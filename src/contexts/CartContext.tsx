@@ -33,11 +33,7 @@ interface iCartContext {
     removeAllCar: () => void;
     addCar: (identifier: number) => void;
     isSearchFinish: boolean;
-
-
 }
-
-
 
 export const CartContext = createContext({} as iCartContext);
 

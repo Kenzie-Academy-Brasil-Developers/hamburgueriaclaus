@@ -11,8 +11,7 @@ export const CardStyle = styled.li`
     padding: 10px;
     :hover {
         border-color:  var(--color-primary);
-        background-color: var(--white-0);
-        
+        background-color: var(--white-0);   
     }
 `;
 
@@ -43,10 +42,24 @@ export const ImgStyle = styled.img`
 export const ContainerCardInfoStyle = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 
     small {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         font-size: 13px;
+        border: 2px solid #f2f2f2;
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            padding: 2px;
+            border: none;
+            background-color: #f2f2f2;
+            color: #EB5757;
+        }
     }
 `;
 

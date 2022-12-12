@@ -13,7 +13,8 @@ interface iCardProps {
 
 export function CardCar({ name , category , img , id , counter }: iCardProps) {
     const { 
-        removeCar
+        removeCar,
+        addCar
     } = useContext(CartContext);
     return (
         <CardStyle>
@@ -24,7 +25,11 @@ export function CardCar({ name , category , img , id , counter }: iCardProps) {
                 <ContainerCardInfoStyle>
                     <ProductNameStyle>{name}</ProductNameStyle>
                     <CategoryStyle>{category}</CategoryStyle>
-                    <small>{counter}</small>
+                    <small>
+                        <button onClick={() => removeCar(id)}>-</button>
+                        {counter}
+                        <button onClick={() => addCar(id)}>+</button>
+                    </small>
                 </ContainerCardInfoStyle>
             </CardDescriptionStyle>
             <BtnLittle classList='btnSmall' action={() => removeCar(id)} dataAction={id}>Remover</BtnLittle>

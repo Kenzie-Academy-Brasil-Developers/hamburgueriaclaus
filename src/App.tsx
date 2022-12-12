@@ -7,6 +7,7 @@ import { GlobalStyle } from './styles/Global';
 import { DontFindItem } from './components/DontFindItem';
 import { InfoSearch } from './components/InfoSearch';
 import { CartContext } from './contexts/CartContext';
+import { RoutesMain } from './routes/RoutesMain';
 
 export function App() {
   const {
@@ -16,7 +17,7 @@ export function App() {
 
   return (
     <div className='App'>
-      <GlobalStyle/>
+      {/* <GlobalStyle/>
       <Header/>
         {isSearchFinish ? <InfoSearch/> : <></> }
       <Main>
@@ -25,7 +26,8 @@ export function App() {
             (<ListProducts/>)
           }
         <Aside/>
-      </Main>
+      </Main> */}
+      <RoutesMain/>
     </div>
   );
 }

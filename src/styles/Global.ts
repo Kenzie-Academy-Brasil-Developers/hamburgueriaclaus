@@ -54,13 +54,15 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .container {
-        margin: 0 115px;
+        margin: 0 auto;
         max-width: 1300px;
+        padding: 0 114px;
     }
 
     @media(max-width: 900px) {
         .container {
             margin: 0 16px;
+            padding: 0;
         }
     }
     ${() => Animations};
