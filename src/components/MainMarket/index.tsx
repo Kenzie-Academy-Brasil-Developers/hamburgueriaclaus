@@ -1,11 +1,8 @@
 import React from "react";
 import { MainStyles } from "./styles";
+import { iMainMarketProps } from "./types";
 
-interface iMainProps {
-    children: React.ReactNode;
-}
-
-export function Main({ children }: iMainProps) {
+export function MainMarket({ children }: iMainMarketProps) {
     return (
         <MainStyles className="container">
             {children}

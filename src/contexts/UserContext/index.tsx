@@ -1,26 +1,14 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
+import { iUserContext, iUserProviderProps, iUser } from "./types";
 
-interface iUserProviderProps {
-    children: React.ReactNode;
-}
 
-interface iUser {
-    email: string;
-    name: string;
-    id: number;
-}
-
-interface iUserContext {
-    user: iUser | null;
-    loading: boolean;
-}
 
 export const UserContext = createContext({} as iUserContext);
 
 export function UserProvider({ children }: iUserProviderProps) {
     const [user, setUser] = useState<iUser | null>(null);
     const [loading, setLoading] = useState(false);
-
+    
     return (
         <UserContext.Provider value={{
             user,

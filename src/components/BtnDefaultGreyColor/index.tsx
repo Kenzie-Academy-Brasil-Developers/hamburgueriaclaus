@@ -1,13 +1,8 @@
 import React from 'react';
 import { ButtonStyle } from './styles';
+import { iBtnGreyColorProps } from './types';
 
-interface iBtnProps {
-    action: () => void;
-    children: React.ReactNode;
-    classList: string;
-}
-
-export function BtnDefaultGreyColor({ action , children, classList }: iBtnProps) {
+export function BtnDefaultGreyColor({ action , children, classList }: iBtnGreyColorProps) {
     return (
         <ButtonStyle className={classList} onClick={action}>
             {children}

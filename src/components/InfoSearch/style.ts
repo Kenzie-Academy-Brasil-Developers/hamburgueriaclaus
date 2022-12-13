@@ -6,7 +6,6 @@ export const InfoStyle = styled.div`
     align-items: center;
     font-weight: var(--font-weight-4);
     font-size: 26px;
-    padding-bottom: 38px;
     h2 {
         color: var(--gray-100);
     }

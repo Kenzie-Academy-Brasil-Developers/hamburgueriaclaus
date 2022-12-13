@@ -3,16 +3,9 @@ import { CartContext } from '../../contexts/CartContext';
 import { valueReal } from '../../generalFunctions';
 import { BtnDefaultMainColor } from '../BtnDefaultMainColor';
 import { CardStyle, CategoryStyle, ContainerImgStyle, CardInfoStyle, ImgStyle, ProductNameStyle, PriceStyle } from './styles';
+import { iCardAllProps } from './types';
 
-interface iCardProps {
-    name: string;
-    id: number;
-    category: string;
-    price: number;
-    img: string;
-}
-
-export function CardAll({ name , id, category , price , img}: iCardProps) {
+export function CardAll({ name , id, category , price , img}: iCardAllProps) {
     const {
         addCar
     } = useContext(CartContext);
