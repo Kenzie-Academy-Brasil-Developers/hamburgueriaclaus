@@ -3,11 +3,12 @@ import { useState } from "react";
 import { BsEyeFill , BsEyeSlashFill } from 'react-icons/bs';
 import { iInputDefaultPros } from "./types";
 
-export function InputDefault({ error , id , placeholder , label , type , status }: iInputDefaultPros) {
+export function InputDefault({ error , id , label , type , status }: iInputDefaultPros) {
     const defaultColorBtn = { color: 'gray' };
     const [showPasswd, setShowPasswd] = useState(false);
     const [currType, setCurrType] = useState(type);
     const [currentBtn, setCurrentBtn] = useState(<BsEyeFill style={defaultColorBtn}/>);
+    const [currValue, setCurrValue] = useState('');
 
     function changeVisibilityPasswd() {
         setShowPasswd(!showPasswd);
@@ -20,12 +21,15 @@ export function InputDefault({ error , id , placeholder , label , type , status 
         }
     }
 
+    console.log(currValue)
+
     return (
-        <InputStyle htmlFor={id} currColor={status}>
+        <InputStyle htmlFor={id} currColor={status} currValue={currValue}>
             <fieldset>
-                <legend>{label}</legend>
+                <label>{label}</label>
                 <div>
-                    <input placeholder={placeholder} id={id} type={
+                    <input id={id} onChange={({target:{value}}) => setCurrValue(value)}
+                        type={
                         type === 'password' ?
                         currType :
                         type

@@ -16,21 +16,19 @@ export function Login() {
     return (
         <div className="container">
             <LoginStyle>
-                    <FormStyle>
+                    <FormStyle noValidate>
                         <h1>Login</h1>
                         <InputDefault
                             id='email'
                             type='email'
                             label='Email'
                             status='default'
-                            placeholder='Digite o email'
                         />
                         <InputDefault
                             id='password'
                             type='password'
                             label='Senha'
                             status='default'
-                            placeholder='Digite a senha'
                         />
                         <BtnDefaultMainColor classList="btnBig" action={signIn}>
                             Logar
