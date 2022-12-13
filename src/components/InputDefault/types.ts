@@ -1,6 +1,5 @@
 export interface iInputDefaultPros {
     id: string;
-    placeholder: string;
     label: string;
     type: string;
     status: string;
@@ -9,4 +8,5 @@ export interface iInputDefaultPros {
 
 export interface iStyledProps {
     currColor: string;
+    currValue: string;
 }

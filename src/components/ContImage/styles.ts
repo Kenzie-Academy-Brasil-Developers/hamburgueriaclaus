@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const ContImageStyle = styled.section`
     img {
         display: block;
+        object-fit: contain;
+        max-width: 363px;
     }
     order: 0;
 
