@@ -2,16 +2,9 @@ import { useContext } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 import { BtnLittle } from '../BtnLittle';
 import { CardDescriptionStyle, CardStyle, CategoryStyle, ContainerCardInfoStyle, ContainerImgStyle, ImgStyle, ProductNameStyle } from "./styles";
+import { iCardCarProps } from './types';
 
-interface iCardProps {
-    name: string;
-    category: string;
-    img: string;
-    id: number;
-    counter?: number;
-}
-
-export function CardCar({ name , category , img , id , counter }: iCardProps) {
+export function CardCar({ name , category , img , id , counter }: iCardCarProps) {
     const { 
         removeCar,
         addCar

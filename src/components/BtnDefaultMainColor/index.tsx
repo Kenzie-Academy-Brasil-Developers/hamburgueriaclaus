@@ -1,14 +1,8 @@
 import React from 'react';
 import { ButtonStyle } from './styles';
+import { iBtnMainColorProps } from './types';
 
-interface iBtnProps {
-    action: (dataAction?: number | string) => void;
-    children: React.ReactNode;
-    classList: string;
-    dataAction?: number | string;
-}
-
-export function BtnDefaultMainColor({ action , dataAction, children, classList }: iBtnProps) {
+export function BtnDefaultMainColor({ action , dataAction, children, classList }: iBtnMainColorProps) {
     return (
         <ButtonStyle className={classList} onClick={() => action(dataAction)}>
             {children}

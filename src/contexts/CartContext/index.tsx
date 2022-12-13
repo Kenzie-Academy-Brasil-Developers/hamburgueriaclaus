@@ -1,42 +1,13 @@
 import React, { createContext, useEffect, useState } from "react";
-import { api } from "../services/api";
-import imagePlaceholder from '../assets/placeholderProduct.png';
-
-interface iCartProps {
-  children: React.ReactNode;
-}
-
-interface iProduct {
-    id: number;
-    name: string;
-    category: string;
-    price: number;
-    img: string;
-    priceTotal?: number;
-    reactKey?: number;
-    counter?: number;
-}
-
-interface iInfo {
-  name: string;
-  many: number;
-}
-
-interface iCartContext {
-    currentList: iProduct[];
-    filterWithThisName: (nameToSearch: string) => void;
-    stopSearch: () => void;
-    currentInfoSearch: iInfo[];
-    itemDoesNotExist: boolean;
-    carList: iProduct[];
-    removeCar: (identifier: number) => void;
-    removeAllCar: () => void;
-    addCar: (identifier: number) => void;
-    isSearchFinish: boolean;
-}
+import { api } from "../../services/api";
+import imagePlaceholder from '../../assets/placeholderProduct.png';
+import { iCartContext, iCartProps, iProduct, iInfo } from "./types";
 
 export const CartContext = createContext({} as iCartContext);
 
+interface axiosResponse {
+
+}
 
 export function CartProvider({children}: iCartProps) {
     const [ currentList, setCurrentList ] = useState<iProduct[]>([
@@ -51,16 +22,17 @@ export function CartProvider({children}: iCartProps) {
           img: imagePlaceholder,
         }
       ]);
-      const [completeList, setCompleteList] = useState<iProduct[]>([]); 
+      const [completeList, setCompleteList] = useState([] as iProduct[]); 
       const [itemDoesNotExist, setItemDoesNotExist] = useState(false);
       const [isSearchFinish, setIsSearchFinish] = useState(false);
-      const [currentInfoSearch, setCurrentInfoSearch] = useState<iInfo[]>([]);
-      const [carList, setCarlist] = useState<iProduct[]>([]);
-    
+      const [currentInfoSearch, setCurrentInfoSearch] = useState([] as iInfo[]);
+      const [carList, setCarlist] = useState([] as iProduct[]);
+      
       useEffect(() => {
-        api.get('/products')
-          .then(response => {
-            const listFormatToReact = response.data.map((el: iProduct) => {
+        async function getProducts(){
+          try {
+            const { data }: any = api.get('/products') //Ajustar o token
+            const listFormatToReact = data.map((el: iProduct) => {
               el.reactKey = Math.random();
               el.counter = 1;
               el.priceTotal = el.price;
@@ -68,9 +40,13 @@ export function CartProvider({children}: iCartProps) {
             });
             setCurrentList(listFormatToReact);
             setCompleteList(listFormatToReact);
-    
-          })
-          .catch(error => console.log(error));
+          } catch(error) {
+            console.log(error);
+          } finally {
+
+          }
+        }
+        getProducts();
       }, []);
         
         
