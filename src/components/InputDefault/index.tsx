@@ -1,15 +1,14 @@
 import { InputStyle } from "./styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsEyeFill , BsEyeSlashFill } from 'react-icons/bs';
 import { iInputDefaultPros } from "./types";
 
-export function InputDefault({ error , id , label , type , status }: iInputDefaultPros) {
+export function InputDefault({ error , id , label , type , status , register , disabled , currInputValue }: iInputDefaultPros) {
     const defaultColorBtn = { color: 'gray' };
     const [showPasswd, setShowPasswd] = useState(false);
     const [currType, setCurrType] = useState(type);
     const [currentBtn, setCurrentBtn] = useState(<BsEyeFill style={defaultColorBtn}/>);
-    const [currValue, setCurrValue] = useState('');
-
+  
     function changeVisibilityPasswd() {
         setShowPasswd(!showPasswd);
         if (showPasswd) {
@@ -21,19 +20,17 @@ export function InputDefault({ error , id , label , type , status }: iInputDefau
         }
     }
 
-    console.log(currValue)
-
     return (
-        <InputStyle htmlFor={id} currColor={status} currValue={currValue}>
+        <InputStyle htmlFor={id} currColor={status} currValue={currInputValue} disabled={disabled}>
             <fieldset>
                 <label>{label}</label>
                 <div>
-                    <input id={id} onChange={({target:{value}}) => setCurrValue(value)}
+                    <input disabled={disabled} id={id}
                         type={
                         type === 'password' ?
                         currType :
                         type
-                    }/>
+                    } {...register}/>
                     {
                         type === 'password' ?
                         <button type='button' onClick={changeVisibilityPasswd}>

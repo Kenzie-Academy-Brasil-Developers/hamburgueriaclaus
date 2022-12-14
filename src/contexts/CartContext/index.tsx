@@ -1,15 +1,15 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import imagePlaceholder from '../../assets/placeholderProduct.png';
 import { iCartContext, iCartProps, iProduct, iInfo } from "./types";
+import { UserContext } from "../UserContext";
+import axios from "axios";
 
 export const CartContext = createContext({} as iCartContext);
 
-interface axiosResponse {
-
-}
-
 export function CartProvider({children}: iCartProps) {
+    const { canLogin } = useContext(UserContext);
+
     const [ currentList, setCurrentList ] = useState<iProduct[]>([
         {
           id: 0,
@@ -30,24 +30,30 @@ export function CartProvider({children}: iCartProps) {
       
       useEffect(() => {
         async function getProducts(){
-          try {
-            const { data }: any = api.get('/products') //Ajustar o token
-            const listFormatToReact = data.map((el: iProduct) => {
-              el.reactKey = Math.random();
-              el.counter = 1;
-              el.priceTotal = el.price;
-              return el;
-            });
-            setCurrentList(listFormatToReact);
-            setCompleteList(listFormatToReact);
-          } catch(error) {
-            console.log(error);
-          } finally {
+            if (canLogin) {
+            try {
+              const {data} = await api.get<iProduct[]>('/products', {
+                headers: {
+                  'Authorization': `Bearer ${localStorage.getItem('@token')}`
+                }
+              }) 
+              const listFormatToReact = data.map((el: iProduct) => {
+                el.reactKey = Math.random();
+                el.counter = 1;
+                el.priceTotal = el.price;
+                return el;
+              });
+              setCurrentList(listFormatToReact);
+              setCompleteList(listFormatToReact);
+            } catch(error) {
+              console.log(error);
+            } finally {
 
+            }
           }
         }
         getProducts();
-      }, []);
+      }, [canLogin]);
         
         
     
