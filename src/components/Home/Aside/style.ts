@@ -14,26 +14,26 @@ export const AsideStyle = styled.aside`
         width: 99%;
         max-width: 99%;
     }
-`;
 
-export const HeadAsideStyle = styled.div`
-    background-color: var(--color-primary);
-    padding: 22px 20px 13px 20px;
-    color: var(--white-0);
-    font-size: 18px;
-    font-weight: var(--font-weight-4);
-    width: 100%;
-    border-radius: var(--radius-2) var(--radius-2) 0 0;
-    box-sizing: border-box;
-`;
+    .headAsideStyle {
+        background-color: var(--color-primary);
+        padding: 22px 20px 13px 20px;
+        color: var(--white-0);
+        font-size: 18px;
+        font-weight: var(--font-weight-4);
+        width: 100%;
+        border-radius: var(--radius-2) var(--radius-2) 0 0;
+        box-sizing: border-box;
+    }
 
-export const CarStyle = styled.div`
-    background-color: var(--gray-0);
-    min-height: 160px;
-    max-height: 465px;
-    width: 100%;
-    
-    overflow: hidden;
+    .carStyle {
+        background-color: var(--gray-0);
+        min-height: 160px;
+        max-height: 465px;
+        width: 100%;
+        
+        overflow: hidden;
+    }
 `;
 
 export const CarListStyle = styled.ul`

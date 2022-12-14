@@ -25,7 +25,7 @@ export function InputDefault({ error , id , label , type , status , register , d
             <fieldset>
                 <label>{label}</label>
                 <div>
-                    <input id={id}
+                    <input disabled={disabled} id={id}
                         type={
                         type === 'password' ?
                         currType :

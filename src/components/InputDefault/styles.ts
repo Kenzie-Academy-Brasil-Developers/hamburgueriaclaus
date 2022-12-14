@@ -50,8 +50,8 @@ export const InputStyle = styled.label<iStyledProps>`
         background-color: transparent;
         font-size: 16px;
     }
-
     :focus-within {
+    
         fieldset {
             background-color: var(--white-0);
             border-color: ${({currColor}) => {
@@ -63,9 +63,13 @@ export const InputStyle = styled.label<iStyledProps>`
                     return css`var(--fb-success)`;
 
                 default:
-                    return css`var(--gray-100)`;
+                    return;
             }
             }};
+        
+        fieldset {
+                ${({currColor}) => currColor === 'default' ? 'border-color: var(--gray-100)' : '/**/' };
+            }
         }
 
         label {
@@ -76,16 +80,6 @@ export const InputStyle = styled.label<iStyledProps>`
             background-color: var(--white-0);
         }
     }
-
-    ${({disabled}) => {
-        if (disabled) {
-            return css`
-                fieldset {
-                    background-color: var(--gray-30);
-                }
-            `;
-        }
-    }};
 
     ${({currValue}) => {
         if (currValue.length > 0) {
@@ -106,4 +100,16 @@ export const InputStyle = styled.label<iStyledProps>`
         }
     }};
     
+    fieldset {
+        ${({currColor}) => currColor === 'success' ? 'border-color: var(--fb-success)' : '/**/' };
+    }
+    ${({disabled}) => {
+        if (disabled) {
+            return css`
+                fieldset {
+                    border-color: var(--fb-load);
+                }
+            `;
+        }
+    }};
 `;

@@ -4,5 +4,6 @@ export interface iBtnMainColorProps {
     children: React.ReactNode;
     classList: "btnBig" | "btnMed"; 
     type?: "button" | "submit" | "reset";
+    disabled?: boolean;
     dataAction?: number | string;
 }

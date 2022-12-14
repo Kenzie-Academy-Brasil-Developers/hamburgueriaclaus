@@ -22,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
         --fb-warn: #FFCD07;
         --fb-success: #168821;
         --fb-info: #155BCB;
+        --fb-load: #54c7ec;
         --color-shadow: #00000033; 
 
         --radius-1: 8px;
@@ -57,6 +58,10 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0 auto;
         max-width: 1300px;
         padding: 0 114px;
+    }
+
+    body {
+        margin-bottom: 50px;
     }
 
     @media(max-width: 900px) {

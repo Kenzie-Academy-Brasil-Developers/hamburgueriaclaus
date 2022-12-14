@@ -20,12 +20,12 @@ export const ContainerInputStyle = styled.div`
         margin-top: 14px;
         width: 300px;
     }
-`;
 
-export const InputStyle = styled.input`
-    background-color: transparent;
-    outline: none;
-    border: none;
-    width: 160px;
-    height: max-content;
+    > input {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        width: 160px;
+        height: max-content;
+    }
 `;

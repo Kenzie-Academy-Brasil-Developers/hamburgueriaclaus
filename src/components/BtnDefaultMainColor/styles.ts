@@ -8,4 +8,9 @@ export const ButtonStyle = styled.button`
         background-color: var(--color-primary-50);
     }
 
+    :disabled {
+        pointer-events: none;
+        background-color: var(--fb-load);
+    }
+
 `;
