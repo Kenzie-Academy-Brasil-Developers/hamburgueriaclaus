@@ -3,9 +3,7 @@ import { UserContext } from '../contexts/UserContext';
 import { Outlet , Navigate } from 'react-router-dom';
 
 export function RoutesAuth() {
-    const { user , loadingGlobal } = useContext(UserContext);
-
-    if (loadingGlobal) return null;
+    const { user } = useContext(UserContext);
 
     return user ? <Outlet/> : <Navigate to='/'/>
 }
