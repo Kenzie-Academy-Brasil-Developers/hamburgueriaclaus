@@ -1,9 +1,8 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { iUserContext, iUserProviderProps, iUser, iFormValuesLogin, iLoginResponse } from "./types";
+import { iUserContext, iUserProviderProps, iUser, iFormValuesLogin, iResponse, iFormValuesRegistry } from "./types";
 import { SubmitHandler } from 'react-hook-form';
 import { toast } from "react-toastify";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
@@ -11,30 +10,56 @@ export const UserContext = createContext({} as iUserContext);
 
 export function UserProvider({ children }: iUserProviderProps) {
     const [user, setUser] = useState<iUser | null>(null);
-    const [loadingGlobal, setLoadingGlobal] = useState(false);
+    const [loadingGlobal, setLoadingGlobal] = useState(true);
     const [loadingForm, setLoadForm] = useState(false);
     const [successProcess, setSuccessProcess] = useState(false);
-    const [logout, setLogout] = useState(false);
     const [canLogin, setCanLogin] = useState(false);
     const navigate = useNavigate();
 
     const submitLogin: SubmitHandler<iFormValuesLogin> = async (currData) => {
         setLoadForm(true);
-        toast.loading('Carregando...', {toastId: 'load'})
+        toast.loading('Carregando...', {toastId: 'load'});
         try {
-            const { data } = await api.post<iLoginResponse>('/login', currData);
+            const { data } = await api.post<iResponse>('/login', currData);
             const token = data.accessToken;
             localStorage.setItem('@token', token);
-            api.defaults.headers.common['Authorization'] = token;
             setUser(data.user);
             toast.success('Login realizado com sucesso');
             setLoadForm(false);
             setSuccessProcess(true);
+            setLoadingGlobal(false); 
             setCanLogin(true);
-            navigate('/marketplace')
+            navigate('/marketplace');
         } catch(error) {
             console.log(error);
             toast.error('Erro! Verifique as informações e tente novamente');
+        } finally {
+            toast.dismiss('load');
+            setLoadForm(false);
+            setTimeout(() => setSuccessProcess(false), 2000);
+        }
+    }
+
+    const submitRegistry: SubmitHandler<iFormValuesRegistry> = async (currData) => {
+        setLoadForm(true);
+        toast.loading('Carregando...', {toastId: 'load'});
+        try {
+            const { data } = await api.post<iResponse>('/users', currData);
+            const token = data.accessToken;
+            localStorage.setItem('@token', token);    
+            setUser(data.user);
+            toast.success('Cadastro realizado com sucesso');
+            setLoadForm(false);
+            setSuccessProcess(true);
+            setLoadingGlobal(false);
+            setCanLogin(true);
+            navigate('/marketplace');
+        } catch(error: any) {
+            if (error.response.data === 'Email already exists') {
+                toast.error('Esse email já está cadastrado! Tente outro');
+            } else {
+                toast.error('Erro! Verifique as informações e tente novamente');
+            }
         } finally {
             toast.dismiss('load');
             setLoadForm(false);
@@ -48,30 +73,30 @@ export function UserProvider({ children }: iUserProviderProps) {
             const token = localStorage.getItem('@token');
             if (token) {
                 try {
-                    const response = await api.get('/users/1', {
+                    const response = await api.get('/products', {
                         headers: {
                             'Authorization': `Bearer ${token}`
                         }
                     });
                     setUser(response.data);
-                    const { email , name , id } = response.data;
-                    setUser({email, name, id}); 
+                    setUser({email:'', name:'', id:0});
+                    setLoadingGlobal(false); 
                     setCanLogin(true);
                     navigate('/marketplace');
                 } catch(error) {
                     console.log(error);
+                    setLoadingGlobal(false); 
                 }
             } 
         }())    
-    }, [logout]);
+    }, []);
 
 
     function clearUserInfo() {
         setCanLogin(false);
         localStorage.clear();
-        setLogout(true);
         navigate('/');
-        setTimeout(() => setLogout(false), 2000);
+        setUser(null);
     }
 
     return (
@@ -82,6 +107,7 @@ export function UserProvider({ children }: iUserProviderProps) {
             successProcess,
             submitLogin,
             clearUserInfo,
+            submitRegistry,
             canLogin
         }}>
             {children}

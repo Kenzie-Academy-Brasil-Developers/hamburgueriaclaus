@@ -30,6 +30,13 @@ export const HeaderStyle = styled.header`
         > button {
             background-color: transparent;
             border: none;
+            > img {
+                filter: drop-shadow(0 0 0 transparent) invert(50%);
+                transition: 0.5s;
+            }
+            > img:hover {
+                filter: drop-shadow(0 0 10px var(--color-shadow)) invert(0%);
+            }
         }
     }
 `;

@@ -8,7 +8,7 @@ export function App() {
     <>
       <GlobalStyle/>
       <ToastContainer
-        position="top-right"
+        position='top-right'
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -17,7 +17,7 @@ export function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme='light'
       />
       <RoutesMain/>
     </>

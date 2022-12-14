@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import { CartContext } from "../../../contexts/CartContext";
-import { valueReal } from "../../../generalFunctions";
-import { BtnDefaultMainColor } from "../../BtnDefaultMainColor";
-import { CardStyle } from "./styles";
-import { iCardAllProps } from "./types";
+import { useContext } from 'react';
+import { CartContext } from '../../../contexts/CartContext';
+import { valueReal } from '../../../generalFunctions';
+import { BtnDefaultMainColor } from '../../BtnDefaultMainColor';
+import { CardStyle } from './styles';
+import { iCardAllProps } from './types';
 
 export function CardAll({ name, id, category, price, img }: iCardAllProps) {
   const { addCar } = useContext(CartContext);
@@ -17,7 +17,7 @@ export function CardAll({ name, id, category, price, img }: iCardAllProps) {
         <legend>{category}</legend>
         <h4>{valueReal(price)}</h4>
         <BtnDefaultMainColor
-          classList="btnBig"
+          classList='btnBig'
           dataAction={id}
           action={() => addCar(id)}
         >

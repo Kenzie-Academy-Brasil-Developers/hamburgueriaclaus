@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import { CartContext } from "../../../contexts/CartContext";
-import { BtnLittle } from "../../BtnLittle";
-import { CardStyle } from "./styles";
-import { iCardCarProps } from "./types";
+import { useContext } from 'react';
+import { CartContext } from '../../../contexts/CartContext';
+import { BtnLittle } from '../../BtnLittle';
+import { CardStyle } from './styles';
+import { iCardCarProps } from './types';
 
 export function CardCar({ name, category, img, id, counter }: iCardCarProps) {
-  const { removeCar, addCar } = useContext(CartContext);
+  const { removeCar, addCar , removeAllThisProductCar } = useContext(CartContext);
   return (
     <CardStyle>
       <div>
@@ -23,8 +23,8 @@ export function CardCar({ name, category, img, id, counter }: iCardCarProps) {
         </div>
       </div>
       <BtnLittle
-        classList="btnSmall"
-        action={() => removeCar(id)}
+        classList='btnSmall'
+        action={() => removeAllThisProductCar(id)}
         dataAction={id}
       >
         Remover

@@ -26,6 +26,7 @@ export interface iCartContext {
     itemDoesNotExist: boolean;
     carList: iProduct[];
     removeCar: (identifier: number) => void;
+    removeAllThisProductCar: (identifier: number) => void;
     removeAllCar: () => void;
     addCar: (identifier: number) => void;
     isSearchFinish: boolean;

@@ -30,7 +30,7 @@ export function CartProvider({children}: iCartProps) {
       
       useEffect(() => {
         async function getProducts(){
-            if (canLogin) {
+          if (canLogin) {
             try {
               const {data} = await api.get<iProduct[]>('/products', {
                 headers: {
@@ -60,7 +60,7 @@ export function CartProvider({children}: iCartProps) {
       function removeCar(identifier: number) {
         const visibleList = [...currentList];
         const ListHandle = carList.filter(({id}) => id !== identifier);
-        const productToRemove = carList.find((({id}) => id === identifier)); 
+        const productToRemove = carList.find(({id}) => id === identifier); 
         if (productToRemove?.counter) {
           if (productToRemove.counter > 1) {
             productToRemove.counter -= 1;
@@ -71,6 +71,18 @@ export function CartProvider({children}: iCartProps) {
         setCarlist(ListHandle);
         setCurrentList(visibleList);
       };
+
+      function removeAllThisProductCar(identifier: number) {
+        const visibleList = [...currentList];
+        const ListHandle = carList.filter(({id}) => id !== identifier);
+        const productToRemove = carList.find(({id}) => id === identifier);
+        if (productToRemove?.counter) {
+          productToRemove.counter = 1;
+          productToRemove.priceTotal = productToRemove.price;
+        }
+        setCarlist(ListHandle);
+        setCurrentList(visibleList);
+      }
     
       function addCar(identifier: number) {
         const visibleList = [...currentList];
@@ -134,6 +146,7 @@ export function CartProvider({children}: iCartProps) {
             carList,
             removeCar,
             removeAllCar,
+            removeAllThisProductCar,
             addCar
         }}>
             {children}

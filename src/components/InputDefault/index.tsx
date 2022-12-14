@@ -1,7 +1,7 @@
-import { InputStyle } from "./styles";
-import { useEffect, useState } from "react";
+import { InputStyle } from './styles';
+import { useEffect, useState } from 'react';
 import { BsEyeFill , BsEyeSlashFill } from 'react-icons/bs';
-import { iInputDefaultPros } from "./types";
+import { iInputDefaultPros } from './types';
 
 export function InputDefault({ error , id , label , type , status , register , disabled , currInputValue }: iInputDefaultPros) {
     const defaultColorBtn = { color: 'gray' };
