@@ -16,6 +16,13 @@ export interface iFormValuesLogin {
     password: string;
 }
 
+export interface iFormValuesRegistry {
+    email: string;
+    password: string;
+    name: string;
+    passwordC: string;
+}
+
 export interface iUserContext {
     user: iUser | null;
     loadingGlobal: boolean;
@@ -23,10 +30,11 @@ export interface iUserContext {
     successProcess: boolean;
     canLogin: boolean;
     submitLogin: (currData: iFormValuesLogin) => Promise<void>;
+    submitRegistry: (currData: iFormValuesRegistry) => Promise<void>;
     clearUserInfo(): void;
 }
 
-export interface iLoginResponse {
+export interface iResponse {
     accessToken: string;
     user: iUser;
 }

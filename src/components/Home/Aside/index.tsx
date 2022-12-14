@@ -1,21 +1,21 @@
-import { useContext } from "react";
-import { CartContext } from "../../../contexts/CartContext";
-import { CardCar } from "../CardCar";
-import { CarTotal } from "../CarTotal";
+import { useContext } from 'react';
+import { CartContext } from '../../../contexts/CartContext';
+import { CardCar } from '../CardCar';
+import { CarTotal } from '../CarTotal';
 import {
   AsideStyle,
   CarEmptyStyle,
   CarListStyle,
-} from "./style";
+} from './style';
 
 export function Aside() {
   const { carList } = useContext(CartContext);
   return (
     <AsideStyle>
-      <div className="headAsideStyle">
+      <div className='headAsideStyle'>
         <h2>Carrinho de compras</h2>
       </div>
-      <div className="carStyle">
+      <div className='carStyle'>
         {carList.length === 0 ? (
           <CarEmptyStyle>
             <h3>Sua sacola está vazia</h3>

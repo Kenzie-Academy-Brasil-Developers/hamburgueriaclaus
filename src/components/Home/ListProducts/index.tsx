@@ -1,7 +1,7 @@
-import { useContext } from "react";
-import { CartContext } from "../../../contexts/CartContext";
-import { CardAll } from "../CardAll";
-import { ListProductsStyles } from "./styles";
+import { useContext } from 'react';
+import { CartContext } from '../../../contexts/CartContext';
+import { CardAll } from '../CardAll';
+import { ListProductsStyles } from './styles';
 
 export function ListProducts() {
   const { currentList } = useContext(CartContext);

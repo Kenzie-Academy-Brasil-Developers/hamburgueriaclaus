@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FormStyle = styled.form`
     border: 2px solid var(--gray-0);

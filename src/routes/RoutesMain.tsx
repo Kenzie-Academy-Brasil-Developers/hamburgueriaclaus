@@ -1,10 +1,10 @@
-import React from "react"
-import { Routes , Route } from "react-router-dom";
-import { CartProvider } from "../contexts/CartContext";
-import { Home } from "../pages/Home";
-import { Login } from "../pages/Login";
-import { Registry } from "../pages/Registry";
-import { RoutesAuth } from "./RoutesAuth";
+import React from 'react'
+import { Routes , Route } from 'react-router-dom';
+import { CartProvider } from '../contexts/CartContext';
+import { Home } from '../pages/Home';
+import { Login } from '../pages/Login';
+import { Registry } from '../pages/Registry';
+import { RoutesAuth } from './RoutesAuth';
 
 export function RoutesMain() {
     return (

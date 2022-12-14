@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import { iStyledProps } from "./types";
+import styled, { css } from 'styled-components';
+import { iStyledProps } from './types';
 
 export const InputStyle = styled.label<iStyledProps>`
     position: relative;

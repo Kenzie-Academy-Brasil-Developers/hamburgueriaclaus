@@ -1,6 +1,6 @@
-import { UseFormRegisterReturn } from "react-hook-form";
+import { UseFormRegisterReturn } from 'react-hook-form';
 
-type tOptionsRegister = "password" | 'email' | 'name' | 'passwordC'; 
+type tOptionsRegister = 'password' | 'email' | 'name' | 'passwordC'; 
 
 export interface iInputDefaultPros {
     id: string;

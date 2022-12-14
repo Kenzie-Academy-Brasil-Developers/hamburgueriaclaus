@@ -1,4 +1,4 @@
-import { NoticeStyle } from "./styles";
+import { NoticeStyle } from './styles';
 
 export function DontFindItem() {
     return(

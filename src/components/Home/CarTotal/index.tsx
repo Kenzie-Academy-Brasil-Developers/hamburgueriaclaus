@@ -1,8 +1,8 @@
-import { valueReal } from "../../../generalFunctions";
-import { CarTotalStyle } from "./styles";
-import { BtnDefaultGreyColor } from "../../BtnDefaultGreyColor";
-import { useContext } from "react";
-import { CartContext } from "../../../contexts/CartContext";
+import { valueReal } from '../../../generalFunctions';
+import { CarTotalStyle } from './styles';
+import { BtnDefaultGreyColor } from '../../BtnDefaultGreyColor';
+import { useContext } from 'react';
+import { CartContext } from '../../../contexts/CartContext';
 
 export function CarTotal() {
   const { carList, removeAllCar } = useContext(CartContext);
@@ -17,7 +17,7 @@ export function CarTotal() {
           )}
         </h4>
       </div>
-      <BtnDefaultGreyColor classList="btnBig" action={removeAllCar}>
+      <BtnDefaultGreyColor classList='btnBig' action={removeAllCar}>
         Remover todos
       </BtnDefaultGreyColor>
     </CarTotalStyle>

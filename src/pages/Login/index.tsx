@@ -1,20 +1,19 @@
-import { BtnDefaultMainColor } from "../../components/BtnDefaultMainColor";
-import { ContImage } from "../../components/ContImage";
-import { InputDefault } from "../../components/InputDefault";
-import { LinkDefaultGreyColor } from "../../components/LinkDefaultGreyColor";
-import { FormStyle } from "../../styles/Form";
-import { LoginStyle } from "./styles";
-import { iInputStatus } from "./types";
-import { useForm , SubmitHandler } from 'react-hook-form';
+import { BtnDefaultMainColor } from '../../components/BtnDefaultMainColor';
+import { ContImage } from '../../components/ContImage';
+import { InputDefault } from '../../components/InputDefault';
+import { LinkDefaultGreyColor } from '../../components/LinkDefaultGreyColor';
+import { FormStyle } from '../../styles/Form';
+import { LoginStyle } from './styles';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useContext, useEffect, useState } from "react";
-import { formSchema } from "./schema";
-import { UserContext } from "../../contexts/UserContext";
-import { iFormValuesLogin } from "../../contexts/UserContext/types";
+import { useContext } from 'react';
+import { formSchema } from './schema';
+import { UserContext } from '../../contexts/UserContext';
+import { iFormValuesLogin } from '../../contexts/UserContext/types';
 
 export function Login() {
 
-    const { submitLogin , loadingForm , successProcess } = useContext(UserContext);
+    const { user, submitLogin , loadingForm , successProcess } = useContext(UserContext);
 
     const { register , handleSubmit , watch ,  formState: { errors } } = useForm<iFormValuesLogin>({
         mode: 'onChange',
@@ -22,7 +21,7 @@ export function Login() {
     });
     
     return (
-        <div className="container">
+        <div className='container'>
             <LoginStyle>
                     <FormStyle onSubmit={handleSubmit(submitLogin)} noValidate>
                         <h1>Login</h1>
@@ -46,7 +45,7 @@ export function Login() {
                             error={errors.password?.message}
                             register={register('password')}
                         />
-                        <BtnDefaultMainColor disabled={loadingForm} classList="btnBig" type='submit' action={() => null}>
+                        <BtnDefaultMainColor disabled={loadingForm} classList='btnBig' type='submit' action={() => null}>
                             Logar
                         </BtnDefaultMainColor>
                         <legend>

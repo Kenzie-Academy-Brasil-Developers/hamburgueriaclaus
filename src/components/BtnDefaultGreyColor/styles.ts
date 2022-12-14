@@ -10,4 +10,10 @@ export const ButtonStyle = styled.button`
         color: var(--gray-20);
     }
 
+    :disabled {
+        pointer-events: none;
+        background-color: var(--fb-load);
+        color: var(--white-0);
+    }
+
 `;

@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
 export const Buttons = css`
     .btnBig, .btnMed, .btnSmall {
