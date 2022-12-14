@@ -5,7 +5,7 @@ export const InputStyle = styled.label<iStyledProps>`
     position: relative;
     fieldset {
         border: 2px solid var(--gray-0);
-        padding: 10px 10px 15px 10px;
+        padding: 10px 10px;
         border-radius: var(--radius-1);
         margin-bottom: 8px;
         background-color: var(--gray-0);
@@ -77,6 +77,16 @@ export const InputStyle = styled.label<iStyledProps>`
         }
     }
 
+    ${({disabled}) => {
+        if (disabled) {
+            return css`
+                fieldset {
+                    background-color: var(--gray-30);
+                }
+            `;
+        }
+    }};
+
     ${({currValue}) => {
         if (currValue.length > 0) {
             return css`
@@ -95,4 +105,5 @@ export const InputStyle = styled.label<iStyledProps>`
             `;
         }
     }};
+    
 `;

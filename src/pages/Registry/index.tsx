@@ -15,7 +15,7 @@ export function Registry() {
         <div className="container">
             <RegistryStyle>
                 <ContImage/>
-                <FormStyle noValidate>
+                {/* <FormStyle noValidate>
                     <div>
                         <h1>Registry</h1>
                         <Link to='/login'>Retornar para o login</Link>
@@ -47,7 +47,7 @@ export function Registry() {
                     <BtnDefaultGreyColor classList='btnBig' action={test}>
                         Cadastrar
                     </BtnDefaultGreyColor>
-                </FormStyle>
+                </FormStyle> */}
             </RegistryStyle>
         </div>
     )
