@@ -38,3 +38,11 @@ export interface iResponse {
     accessToken: string;
     user: iUser;
 }
+
+export interface iErrorAxios {
+  
+        response: {
+            data: string;
+        }
+    
+}

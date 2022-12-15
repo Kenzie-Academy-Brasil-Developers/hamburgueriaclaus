@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { iUserContext, iUserProviderProps, iUser, iFormValuesLogin, iResponse, iFormValuesRegistry } from "./types";
+import { iUserContext, iUserProviderProps, iUser, iFormValuesLogin, iResponse, iFormValuesRegistry, iErrorAxios } from "./types";
 import { SubmitHandler } from 'react-hook-form';
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -55,8 +55,8 @@ export function UserProvider({ children }: iUserProviderProps) {
             setCanLogin(true);
             navigate('/marketplace');
         } catch(error) {
-            const currError = error as AxiosError;
-            if (currError.response?.data === 'Email already exists') {
+            const currError = error as AxiosError<iErrorAxios>;
+            if (currError.response?.data + '' === 'Email already exists') {
                 toast.error('Esse email já está cadastrado! Tente outro');
             } else {
                 toast.error('Erro! Verifique as informações e tente novamente');
